@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import malta.pedro.speedometer.features.presentation.SpeedometerViewModel
 import malta.pedro.speedometer.features.presentation.VintageSpeedometer
+import malta.pedro.speedometer.features.presentation.styles.vwClassicStyle
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -29,7 +30,8 @@ fun SpeedometerScreen(
                 .systemBarsPadding()
                 .fillMaxSize()
                 .padding(8.dp),
-            currentSpeed = viewModel.speed
+            currentSpeed = viewModel.speed,
+            style = vwClassicStyle,
         )
     }
 }
