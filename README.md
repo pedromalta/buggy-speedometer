@@ -17,15 +17,18 @@ Totally vibe coded in a few hours—because sometimes you just need that retro d
 ## Screenshots
 
 ### Retro 50/60's style
-![Retro Dashboard Yellow](screenshots/Screenshot_20251101_175219.webp)
+<div style="display: flex; gap: 10px;">
 
-![Retro Dashboard Green](screenshots/Screenshot_20251101_175159.webp)
+<img src="screenshots/Screenshot_20251101_175219.webp" alt="Retro Dashboard Yellow" width="200"/>
+<img src="screenshots/Screenshot_20251101_175159.webp" alt="Retro Dashboard Green" width="200"/>
+
+</div>
 
 ### Options Menu
-![Options Menu](screenshots/Screenshot_20251101_175207.webp)
+<img src="screenshots/Screenshot_20251101_175207.webp" alt="Options Menu" width="200"/>
 
 ### Modern VW style
-![Modern VW](screenshots/Screenshot_20251101_175229.webp)
+<img src="screenshots/Screenshot_20251101_175229.webp" alt="Modern VW" width="200"/>
 
 ---
 
