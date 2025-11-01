@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme -->
+    <style name="Theme.BuggySpeedometer" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- Window background (this will also be your splash background) -->
+        <item name="android:windowBackground">@color/splash_background</item>
+
+        <!-- Primary color (for Toolbar, buttons, etc.) -->
+        <item name="colorPrimary">@color/retro_teal</item>
+        <item name="colorPrimaryDark">@color/retro_teal_dark</item>
+        <item name="colorAccent">@color/mustard_yellow</item>
+
+        <!-- Text colors -->
+        <item name="android:textColorPrimary">@color/cream</item>
+        <item name="android:textColorSecondary">@color/retro_gray</item>
+
+        <!-- Backgrounds -->
+        <item name="android:windowBackground">@color/splash_background</item>
+        <item name="android:colorBackground">@color/cream</item>
+    </style>
+</resources>

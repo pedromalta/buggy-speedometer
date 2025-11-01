@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Retro 50's inspired colors -->
+    <color name="splash_background">#f3b802</color> <!-- mustard yellow -->
+    <color name="mustard_yellow">#f3b802</color>
+    <color name="retro_teal">#008080</color>
+    <color name="retro_teal_dark">#005757</color>
+    <color name="cream">#fff4e1</color>
+    <color name="retro_gray">#5a5a5a</color>
+</resources>

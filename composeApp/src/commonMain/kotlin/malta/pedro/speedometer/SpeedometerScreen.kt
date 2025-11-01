@@ -50,6 +50,7 @@ import malta.pedro.speedometer.features.presentation.SpeedometerViewModel
 import malta.pedro.speedometer.features.presentation.VintageSpeedometer
 import malta.pedro.speedometer.features.presentation.styles.SpeedometerStyle
 import malta.pedro.speedometer.features.presentation.styles.styles
+import malta.pedro.speedometer.features.presentation.theme.BuggySpeedometerTheme
 import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -66,7 +67,7 @@ fun SpeedometerScreen(
         topAppBarColorsFor(viewModel.backgroundColor)
     }
 
-    MaterialTheme {
+    BuggySpeedometerTheme {
         ModalNavigationDrawer(
             drawerState = drawerState,
             drawerContent = {
@@ -170,11 +171,9 @@ fun DrawerContent(
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-
             Column(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Text("Cor de fundo")
 
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(6), // 6 columns for nice spacing
