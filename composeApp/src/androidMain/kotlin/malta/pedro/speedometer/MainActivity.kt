@@ -13,13 +13,21 @@ import malta.pedro.speedometer.features.presentation.SpeedometerViewModel
 import malta.pedro.speedometer.presentation.PermissionHandler
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.loadKoinModules
 import org.koin.core.context.startKoin
+import org.koin.core.context.unloadKoinModules
 import org.koin.dsl.module
+import org.koin.mp.KoinPlatformTools
 
 
 class MainActivity : ComponentActivity() {
 
     private val viewModel: SpeedometerViewModel by viewModel()
+    private val activityModule by lazy {
+        module {
+            single<ComponentActivity> { this@MainActivity }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge(
@@ -34,14 +42,7 @@ class MainActivity : ComponentActivity() {
         )
         super.onCreate(savedInstanceState)
 
-        val activityModule = module {
-            single<ComponentActivity> { this@MainActivity }
-        }
-
-        startKoin {
-            androidContext(this@MainActivity)
-            modules(koinModules + activityModule)
-        }
+        loadKoinModules(activityModule)
 
         setContent {
             PermissionHandler { viewModel.start() }
@@ -51,5 +52,11 @@ class MainActivity : ComponentActivity() {
                 viewModel = viewModel,
             )
         }
+    }
+
+    override fun onDestroy() {
+        unloadKoinModules(activityModule)
+        super.onDestroy()
+
     }
 }
