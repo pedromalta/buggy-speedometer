@@ -20,14 +20,6 @@ data class SpeedometerStyle(
     val unitFontSizeFraction: Float = 0.03f
 )
 
-
-val vwClassicStyle = SpeedometerStyle(
-    needleColor = Color(0xFFb21807),
-    rimColor = Color(0xFF2b2b2b),
-    faceColor = Color(0xFFf5efe6),
-    tickColor = Color.Black
-)
-
 // --- 1940s / 1950s VW Beetle classic ---
 // Cream face, black ticks, red needle, thick rim
 val vwClassic40sStyle = SpeedometerStyle(
