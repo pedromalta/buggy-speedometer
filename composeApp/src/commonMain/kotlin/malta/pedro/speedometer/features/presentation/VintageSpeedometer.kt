@@ -35,12 +35,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import malta.pedro.speedometer.features.presentation.styles.SpeedometerStyle
-import malta.pedro.speedometer.features.presentation.styles.vw60sStyle
-import malta.pedro.speedometer.features.presentation.styles.vw70sStyle
-import malta.pedro.speedometer.features.presentation.styles.vw80sStyle
-import malta.pedro.speedometer.features.presentation.styles.vw90sStyle
-import malta.pedro.speedometer.features.presentation.styles.vwClassic40sStyle
-import malta.pedro.speedometer.features.presentation.styles.vwRetro50sStyle
+import malta.pedro.speedometer.features.presentation.styles.styles
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import kotlin.math.PI
 import kotlin.math.cos
@@ -52,6 +47,7 @@ fun VintageSpeedometer(
     modifier: Modifier = Modifier.size(240.dp),
     currentSpeed: Float,
     maxSpeed: Int = 140,
+    useMph: Boolean,
     style: SpeedometerStyle,
 ) {
     val displayed = animateFloatAsState(
@@ -198,7 +194,12 @@ fun VintageSpeedometer(
                         fontWeight = FontWeight.Medium
                     )
                 ) {
-                    append("km/h")
+                    append(
+                        if (useMph) {
+                            "mph"
+                        } else {
+                            "km/h"
+                        })
                 }
             }
 
@@ -222,10 +223,6 @@ fun VintageSpeedometer(
 @Preview
 @Composable
 fun SpeedometerPreview() {
-    val styles = listOf(
-        vw70sStyle, vw60sStyle, vw80sStyle, vw90sStyle,
-        vwClassic40sStyle, vwRetro50sStyle
-    )
     val scrollState = rememberScrollState()
 
     Column(
@@ -238,6 +235,7 @@ fun SpeedometerPreview() {
                 modifier = Modifier.size(400.dp),
                 currentSpeed = 22.7F,
                 maxSpeed = 140,
+                useMph = false,
                 style = style
             )
             Spacer(modifier = Modifier.height(12.dp))

@@ -4,6 +4,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 
 data class SpeedometerStyle(
+    val styleName: String,
     val needleColor: Color,
     val rimColor: Color,
     val faceColor: Color,
@@ -23,6 +24,7 @@ data class SpeedometerStyle(
 // --- 1940s / 1950s VW Beetle classic ---
 // Cream face, black ticks, red needle, thick rim
 val vwClassic40sStyle = SpeedometerStyle(
+    styleName = "1940s / 1950s VW Beetle classic",
     needleColor = Color(0xFFb21807),
     rimColor = Color(0xFF2b2b2b),
     faceColor = Color(0xFFf5efe6),
@@ -39,6 +41,7 @@ val vwClassic40sStyle = SpeedometerStyle(
 // --- 1960s VW Microbus ---
 // Two-tone orange/cream face, black needle, retro serif font
 val vw60sStyle = SpeedometerStyle(
+    styleName = "1960s VW Microbus",
     needleColor = Color.Black,
     rimColor = Color(0xFF3a3a3a),
     faceColor = Color(0xFFffd699), // light orange
@@ -55,6 +58,7 @@ val vw60sStyle = SpeedometerStyle(
 // --- 1970s VW Beetle ---
 // Cool gray-blue face, blue needle, thinner ticks, subtle hub
 val vw70sStyle = SpeedometerStyle(
+    styleName = "1970s VW Beetle",
     needleColor = Color(0xFF0055a4),
     rimColor = Color(0xFF3a3a3a),
     faceColor = Color(0xFFe6f0f5),
@@ -71,6 +75,7 @@ val vw70sStyle = SpeedometerStyle(
 // --- 1980s VW Golf / Jetta ---
 // Matte black face, neon green needle, high contrast
 val vw80sStyle = SpeedometerStyle(
+    styleName = "1980s VW Golf / Jetta",
     needleColor = Color(0xFF39FF14),
     rimColor = Color(0xFF1c1c1c),
     faceColor = Color(0xFF0f0f0f),
@@ -87,6 +92,7 @@ val vw80sStyle = SpeedometerStyle(
 // --- 1990s VW New Beetle ---
 // Light gray face, thin red needle, minimalistic style
 val vw90sStyle = SpeedometerStyle(
+    styleName = "1990s VW New Beetle",
     needleColor = Color(0xFFc21807),
     rimColor = Color(0xFF2b2b2b),
     faceColor = Color(0xFFe0e0e0),
@@ -103,6 +109,7 @@ val vw90sStyle = SpeedometerStyle(
 // --- 1950s “Retro Two-Tone” ---
 // Red & cream face, black circular counterweight needle
 val vwRetro50sStyle = SpeedometerStyle(
+    styleName = "1950s Retro Two-Tone",
     needleColor = Color.Black,
     rimColor = Color(0xFF2b2b2b),
     faceColor = Color(0xFFf5e6e0), // cream-pink tone
@@ -114,4 +121,9 @@ val vwRetro50sStyle = SpeedometerStyle(
     centralHubColor = Color(0xFF222222),
     centerAccentColor = Color(0xFFff3333), // small red hub circle
     fontFamily = FontFamily.Cursive
+)
+
+val styles = listOf(
+    vw70sStyle, vw60sStyle, vw80sStyle, vw90sStyle,
+    vwClassic40sStyle, vwRetro50sStyle
 )

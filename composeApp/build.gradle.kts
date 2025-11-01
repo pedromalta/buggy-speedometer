@@ -47,6 +47,9 @@ kotlin {
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(libs.koin.core)
             implementation(libs.koin.androidx.compose)
+            implementation("org.jetbrains.compose.material:material-icons-extended:1.7.3")
+            implementation("com.russhwolf:multiplatform-settings:1.3.0")
+            implementation("com.russhwolf:multiplatform-settings-coroutines:1.3.0")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

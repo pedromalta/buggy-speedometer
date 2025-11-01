@@ -18,11 +18,11 @@ class AndroidLocationClient(private val context: Context) : LocationClient {
     @SuppressLint("MissingPermission")
     override suspend fun startLocationUpdates(onUpdate: (LocationData) -> Unit) {
         if (callback != null) return
-        val request = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 200L).build()
+        val request = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 1000L).build()
         callback = object : LocationCallback() {
             override fun onLocationResult(result: LocationResult) {
                 result.lastLocation?.let {
-                    onUpdate(LocationData(it.latitude, it.longitude, it.speed * 3.6F))
+                    onUpdate(LocationData(it.latitude, it.longitude, it.speed))
                 }
             }
         }
