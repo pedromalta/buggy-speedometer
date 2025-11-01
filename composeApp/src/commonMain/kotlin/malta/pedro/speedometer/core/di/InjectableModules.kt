@@ -1,5 +1,6 @@
 package malta.pedro.speedometer.core.di
 
+import malta.pedro.speedometer.features.persistence.SettingsRepository
 import malta.pedro.speedometer.features.presentation.SpeedometerViewModel
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
@@ -9,9 +10,14 @@ expect fun appModules(): Module
 
 fun commonModules() = module {
     factory {
+        SettingsRepository(get())
+    }
+
+    factory {
         SpeedometerViewModel(
             locationClient = get(),
-            permissionsManager = get()
+            permissionsManager = get(),
+            settingsRepository = get()
         )
     }
 }

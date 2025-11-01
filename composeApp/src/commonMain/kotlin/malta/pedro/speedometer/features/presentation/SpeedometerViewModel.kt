@@ -4,22 +4,32 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import malta.pedro.speedometer.features.persistence.SettingsRepository
+import malta.pedro.speedometer.features.presentation.styles.SpeedometerStyle
+import malta.pedro.speedometer.features.presentation.styles.styles
 import malta.pedro.speedometer.features.presentation.styles.vwClassic40sStyle
 
 class SpeedometerViewModel(
     private val locationClient: LocationClient,
     private val permissionsManager: PermissionsManager,
+    private val settingsRepository: SettingsRepository,
 ) : ViewModel() {
 
     var speed by mutableStateOf(0f)
         private set
 
     var selectedStyle by mutableStateOf(vwClassic40sStyle)
+        private set
+
     var backgroundColor by mutableStateOf(Color(0xFFf3b802))
+        private set
+
     var useMph by mutableStateOf(false)
+        private set
 
     val colors = listOf(
         Color(0xFFf3b802), // Sahara Yellow
@@ -48,6 +58,42 @@ class SpeedometerViewModel(
         Color(0xFF607D8B)  // Slate Blue Gray
     )
 
+    init {
+        viewModelScope.launch {
+            settingsRepository.selectedStyleFlow.collect { savedStyleName ->
+                selectedStyle = styles.find { style -> style.styleName == savedStyleName }  ?: vwClassic40sStyle
+            }
+        }
+        viewModelScope.launch {
+            settingsRepository.backgroundColorFlow.collect { savedBackgroundColor ->
+                backgroundColor = Color(savedBackgroundColor)
+            }
+        }
+        viewModelScope.launch {
+            settingsRepository.useMphFlow.collect { useMph = it }
+        }
+    }
+
+    fun changeStyle(style: SpeedometerStyle) {
+        selectedStyle = style
+        viewModelScope.launch {
+            settingsRepository.setSelectedStyle(style.styleName)
+        }
+    }
+
+    fun changeBackgroundColor(color: Color) {
+        backgroundColor = color
+        viewModelScope.launch {
+            settingsRepository.setBackgroundColor(color.toArgb())
+        }
+    }
+
+    fun toggleUnit() {
+        useMph = !useMph
+        viewModelScope.launch {
+            settingsRepository.setUseMph(useMph)
+        }
+    }
 
     fun start() {
         viewModelScope.launch {

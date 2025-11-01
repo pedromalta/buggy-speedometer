@@ -76,15 +76,15 @@ fun SpeedometerScreen(
                     colors = viewModel.colors,
                     selectedStyle = viewModel.selectedStyle,
                     onStyleSelected = {
-                        viewModel.selectedStyle = it
+                        viewModel.changeStyle(it)
                         coroutineScope.launch { drawerState.close() }
                     },
                     onColorSelected = {
-                        viewModel.backgroundColor = it
+                        viewModel.changeBackgroundColor(it)
                         coroutineScope.launch { drawerState.close() }
                     },
                     onUnitToggled = {
-                        viewModel.useMph = it
+                        viewModel.toggleUnit()
                         coroutineScope.launch { drawerState.close() }
                     }
                 )
