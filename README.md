@@ -1,35 +1,70 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+# Buggy Speedometer
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-    folder is the appropriate location.
-
-* [/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
-
-### Build and Run Android Application
-
-To build and run the development version of the Android app, use the run configuration from the run widget
-in your IDE’s toolbar or build it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:assembleDebug
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:assembleDebug
-  ```
-
-### Build and Run iOS Application
-
-To build and run the development version of the iOS app, use the run configuration from the run widget
-in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+A simple **vintage VW-style speedometer** app for your old Buggy dashboards.  
+Totally vibe coded in a few hours—because sometimes you just need that retro dashboard feel. 🚗💨
 
 ---
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+## Features
+
+- Classic VW speedometer design with a few vintage styles
+- Kotlin Multiplatform (KMP) project
+- Designed to run on Android (iOS not tested… use at your own risk 😅)
+- Fun, lightweight, and nostalgic
+
+---
+
+## Screenshots
+
+### Retro 50/60's style
+![Retro Dashboard Yellow](screenshots/Screenshot_20251101_175219.webp)
+
+![Retro Dashboard Green](screenshots/Screenshot_20251101_175159.webp)
+
+### Options Menu
+![Options Menu](screenshots/Screenshot_20251101_175207.webp)
+
+### Modern VW style
+![Modern VW](screenshots/Screenshot_20251101_175229.webp)
+
+---
+
+## Installation
+
+Clone the repo and open it in Android Studio:
+
+```bash
+git clone https://github.com/yourusername/buggy-speedometer.git
+```
+
+Build and run on an Android device or emulator.
+
+---
+
+## Usage
+
+Just launch the app on your Android device and enjoy the vintage VW speedometer vibe.  
+Perfect for classic Buggy dashboards or just for fun.
+
+---
+
+## Tech Stack
+
+- Kotlin Multiplatform (KMP)
+- Jetpack Compose for UI
+- Material3 with a retro 50's inspired color palette
+
+---
+
+## Notes
+
+- iOS support is experimental: never tested, might crash 💀
+- Totally coded for fun and vibes, not production-ready
+- Contributions welcome, but remember: keep it retro. ✌️
+
+---
+
+## License
+
+MIT License – feel free to use, modify, and vibe responsibly.
+
