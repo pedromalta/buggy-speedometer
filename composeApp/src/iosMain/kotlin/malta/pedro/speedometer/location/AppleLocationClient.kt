@@ -1,33 +1,32 @@
 package malta.pedro.speedometer.location
 
-import kotlinx.cinterop.BetaInteropApi
-import kotlinx.cinterop.ExperimentalForeignApi
-import kotlinx.cinterop.useContents
+import kotlinx.cinterop.*
 import malta.pedro.speedometer.features.presentation.LocationClient
 import malta.pedro.speedometer.features.presentation.LocationData
-import platform.CoreLocation.CLLocation
-import platform.CoreLocation.CLLocationManager
-import platform.CoreLocation.CLLocationManagerDelegateProtocol
-import platform.CoreLocation.kCLLocationAccuracyBest
+import platform.CoreLocation.*
 import platform.darwin.NSObject
 
-class IOSLocationClient : NSObject(), LocationClient, CLLocationManagerDelegateProtocol {
+class IOSLocationClient : LocationClient {
     private val manager = CLLocationManager()
-    private var onUpdate: ((LocationData) -> Unit)? = null
+    private val delegate = LocationDelegate()
 
     override suspend fun startLocationUpdates(onUpdate: (LocationData) -> Unit) {
-        this.onUpdate = onUpdate
-        manager.delegate = this
+        delegate.onUpdate = onUpdate
+        manager.delegate = delegate
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.startUpdatingLocation()
     }
 
     override fun stopLocationUpdates() {
         manager.stopUpdatingLocation()
-        onUpdate = null
+        delegate.onUpdate = null
     }
+}
 
-    @OptIn(ExperimentalForeignApi::class, BetaInteropApi::class)
+@OptIn(ExperimentalForeignApi::class, BetaInteropApi::class)
+private class LocationDelegate : NSObject(), CLLocationManagerDelegateProtocol {
+    var onUpdate: ((LocationData) -> Unit)? = null
+
     override fun locationManager(manager: CLLocationManager, didUpdateLocations: List<*>) {
         val loc = didUpdateLocations.lastOrNull() as? CLLocation ?: return
         val locationData = loc.coordinate.useContents {
