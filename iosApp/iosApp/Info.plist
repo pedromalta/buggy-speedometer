@@ -4,5 +4,7 @@
 <dict>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>O velocímetro usa o GPS para calcular a velocidade.</string>
 </dict>
 </plist>
